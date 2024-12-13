@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> home page</title>
+    </head>
+    <style>
+        table,th,tr,td { border: 1px solid;}
+        h1 { color: brown; font-size: xx-large; text-align: center;}
+        h2 {color: crimson;font-size: larger;text-align: left;}
+    </style>
+    <body>
+        <h1>STUDENT MANAGEMENT SYSTEM </h1>
+        <h2> ALL STUDENTS </h2>
+        <table style="width:70%">
+            <tr>
+                <th>id</th>
+                <th> name</th>
+                <th> age</th>
+                <th>grade</th>
+                <th>subjects</th>
+                <th>actions</th>
+                
+            </tr>
+            {% for student in students %}
+                <tr>
+                    <td>{{student[0]}}</td>
+                    <td>{{student[1]}}</td>
+                    <td>{{student[2]}}</td>
+                    <td>{{student[3]}}</td>
+                    <td>{{student[4]}}</td>
+                    <td>
+                        <a href="{{ url_for('update_student', id=student[0]) }}">UPDATE</a>
+                        <a href="{{ url_for('view_student', id=student[0]) }}" style="display: inline;">VIEW</a>
+                        <form action="{{ url_for('delete_student', id=student[0]) }}" method="POST" style="display:inline";>
+                            <input type="submit" value="DELETE">
+                        </form>
+
+                    </td>
+                </tr>
+            {% endfor %}
+
+        </table>
+        <br>
+        <br>
+        <a href="{{url_for('add_student')}}" style="font-size: x-large;"><h4> Add a New Student </h4></a> 
+    </body>
+</html>

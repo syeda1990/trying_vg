@@ -1,0 +1,27 @@
+<!DOCTYPE html>>
+<html>
+    <head>
+        <title>
+            Add a new student
+        </title>
+    </head>
+        <body>
+            <h1 style="font-size: x-large;"> ADD A NEW STUDENT</h1>
+            <form method="POST">
+                <label for="name"> Name</label>
+                <input type="text" id="name" name="name" required><br>
+                <label for="age"> Age</label>
+                <input type="number" id="age" name="age" required><br>
+                <label for="grade"> Grade</label>
+                <input type="text" id="grade" name="grade" required><br>
+                <label for="subjects">Subjects </label>
+                <input type="text" id="subjects" name="subjects" required><br><br>
+                <input type="submit" value="SAVE">
+                <br>
+                <br>
+            </form>
+            <br>
+            <br>
+            <a href="{{ url_for('home') }}" style="font-size: x-large;"><h4>Back to home</h4></a>
+        </body>
+</html>

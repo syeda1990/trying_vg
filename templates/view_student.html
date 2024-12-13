@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> VIEW STUDENT</title>
+    </head>
+    <body>
+       <h1 style="font-size: x-large;"> Information of the selected student </h1>
+       <form action="{{ url_for('view_student', id=student[0]) }}" method="GET">
+        <label for="id">id :</label><br>
+        <input type="number" id="id" name="id" value={{student[0]}}><br>
+        <label for="name">name :</label><br>
+        <input type="text" id="name" name="name" value={{student[1]}}><br>
+        <label for="age">age :</label><br>
+        <input type="age" id="age" name="age" value={{student[2]}}><br>
+        <label for="grade">grade :</label><br>
+        <input type="grade" id="grade" name="grade" value={{student[3]}}><br>
+        <label for="subjects">subjects :</label><br>
+        <input type="test" id="subjects" name="subjects" value={{student[4]}}><br>
+       </form>
+       <a href="{{ url_for('home') }}" style="font-size: x-large;"><h4>Back to home</h4></a>
+    </body>
+</html>
