@@ -16,7 +16,6 @@ def db_connection():
 def home():
     with db_connection() as conn:
         students = conn.execute("SELECT * FROM students;").fetchall()
-        #conn.close()
     return render_template("home.html",students=students)
 
 @app.route("/update_student/<int:id>",methods=["GET","POST"])
@@ -34,9 +33,7 @@ def update_student(id):
                 WHERE id = {id};
                 """)
             conn.commit()
-            #conn.close()
             return redirect(url_for('home'))
-        #conn.close()
     return render_template("update_student.html",student=student)
 
 @app.route("/delete_student/<int:id>",methods=["GET","POST"])
@@ -44,7 +41,6 @@ def delete_student(id):
     with db_connection() as conn:
         conn.execute(f"DELETE FROM students WHERE id = {id};")
         conn.commit()
-        #conn.close()
     return redirect(url_for("home"))
 
 @app.route("/add_student",methods=["GET","POST"])
@@ -60,7 +56,6 @@ def add_student():
             VALUES ("{new_name}", "{new_age}", "{new_grade}","{new_subjects}");
             """)
             conn.commit()
-            #conn.close()
             return redirect(url_for('home'))
     return render_template('add_student.html')
 
@@ -68,7 +63,6 @@ def add_student():
 def view_student(id):
     with db_connection() as conn:
         student = conn.execute(f"SELECT * FROM students WHERE id = {id};").fetchone()
-        #conn.close()
     return render_template("view_student.html",student=student)
 
 if __name__ == "__main__":
